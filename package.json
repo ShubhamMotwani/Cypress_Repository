@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ChromeHeaded": "npx cypress run --headed --browser chrome",
-    "ChromeHeadless": "npx cypress run --browser chrome",
-    "EdgeHeaded": "npx cypress run --headed --browser edge",
-    "Edgeless": "npx cypress run --browser edge",
-    "CypressCloud": "npx cypress run --record --key 05ee75f2-3eae-4532-9936-2cc1c8500df8"
+    "ChromeHeaded": "npx cypress run --e2e --headed --browser chrome",
+    "ChromeHeadless": "npx cypress run --e2e --browser chrome",
+    "EdgeHeaded": "npx cypress run --e2e --headed --browser edge",
+    "Edgeless": "npx cypress run --e2e --browser edge",
+    "CypressCloud": "npx cypress run --e2e --record --key 05ee75f2-3eae-4532-9936-2cc1c8500df8"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.17.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.5.1"
   }
 }
