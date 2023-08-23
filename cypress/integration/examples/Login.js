@@ -9,7 +9,7 @@ describe("My First Test Suite", function () {
     // cy.get("input[placeholder='Password']").type("admin123");
     // cy.get("button[type='submit']").click();
    cy.visit(
-      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+      "https://www.google.com/"
     ); 
   });
 });
