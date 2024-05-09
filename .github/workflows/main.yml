@@ -11,7 +11,7 @@ jobs:
         name: "Install NPM dependencies"
       - run: npm run cy:verify
         name: "Cypress verify"
-      - run: npm run cy:ci
+      - run: npx cypress verify
         name: "Cypress Test Execution"
       - name: Send mail
         if: always()
