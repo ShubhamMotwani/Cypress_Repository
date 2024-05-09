@@ -9,7 +9,7 @@
     "EdgeHeaded": "npx cypress run --e2e --headed --browser edge",
     "Edgeless": "npx cypress run --e2e --browser edge",
     "CypressCloud": "npx cypress run --e2e --record --key 05ee75f2-3eae-4532-9936-2cc1c8500df8",
-    "cy:ci": "cypress run --record --key 0ae6fd84-9ff9-4733-8143-ec003bd11b05 --spec cypress/integration/examples/.js"
+    "cy:ci": "cypress run --record --key 0ae6fd84-9ff9-4733-8143-ec003bd11b05 --spec cypress/integration/examples/*.js"
   },
   "author": "",
   "license": "ISC",
