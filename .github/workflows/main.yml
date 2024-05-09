@@ -2,10 +2,10 @@ name: Cypress Tests
 on: [push]
 jobs: 
   cypress-run:
-    name: Your Display Name Here
+    name: Cypress Automated Test Run
     runs-on: windows-latest
     steps:
-      - name: Checkout
+      - name: Checkout the Main Branch
         uses: actions/checkout@v4.1.5
-      - name: Cypress.io
+      - name: Running the Cypress test
         uses: cypress-io/github-action@v6.5.0
