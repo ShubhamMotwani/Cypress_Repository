@@ -11,5 +11,6 @@ describe("My First Test Suite", function () {
    cy.visit(
       "https://www.google.com/"
     ); 
+      expect(3).to.equal(5);
   });
 });
