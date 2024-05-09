@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
-  projectId: "rpdoj7",
+  projectId: "gtgjq2",
   defaultCommandTimeout: 15000,
 
   video: false,
