@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Checkout the Main Branch
         uses: actions/checkout@v4.1.5
-      - name: Running the Cypress test
-        uses: cypress-io/github-action@v6.5.0
+      - id: npm run cy:ci
+        name: "Cypress Test Execution"
       - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v3
