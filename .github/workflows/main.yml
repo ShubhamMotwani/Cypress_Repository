@@ -1,27 +1,28 @@
 name: Cypress Tests
-on: [push]
-jobs: 
+on:
+  push:
+jobs:
   cypress-run:
     name: Cypress Automated Test Run
     runs-on: windows-latest
     steps:
-    
       - name: Checkout the Main Branch
         uses: actions/checkout@v4.1.5
-      - run: npm ci
-        name: "Install NPM dependencies"
-        
-      - run: npx cypress verify
-        name: "Cypress verify"
-        
-      - run: |
+      
+      - name: Install NPM dependencies
+        run: npm ci
+      
+      - name: Cypress verify
+        run: npx cypress verify
+      
+      - name: Cypress Test Execution
+        id: cypress
+        run: |
           output=$(npm run cy:ci)
           echo "Output: $output"
-          {echo "cypress_output=$output"} >> $GITHUB_ENV
-        id: cypress
+          echo "cypress_output=$output" >> $GITHUB_ENV
         shell: bash
-        name: "Cypress Test Execution"
-        
+ 
       - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -29,9 +30,9 @@ jobs:
           # mail server settings
           server_address: smtp.gmail.com
           server_port: 465
-          # Optional (recommended): mail server username:
+          # Optional (recommended): mail server username
           username: shubhammotwani2000@gmail.com
-          # Optional (recommended) mail server password:
+          # Optional (recommended) mail server password
           password: wtexdyrxbzvuwgux
           # email subject
           subject: ${{ github.repository }} ${{ github.job }} is ${{ job.status }}
