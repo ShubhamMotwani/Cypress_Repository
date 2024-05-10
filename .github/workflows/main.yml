@@ -16,7 +16,7 @@ jobs:
         
       - run: |
           output=$(npm run cy:ci)
-          echo "$output"
+          echo " Shubhammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm $output Endddddddddddddddddddddddd"
           echo "::set-output name=cypress_output::$output"
         id: cypress
         shell: bash
