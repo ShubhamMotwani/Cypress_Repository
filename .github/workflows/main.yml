@@ -19,7 +19,7 @@ jobs:
           echo "Output: $output"
           echo "cypress_output=$output" >> $GITHUB_ENV
         id: cypress
-        shell: bash
+        # shell: bash
         name: "Cypress Test Execution"
         
       - name: Send mail
