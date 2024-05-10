@@ -5,15 +5,21 @@ jobs:
     name: Cypress Automated Test Run
     runs-on: windows-latest
     steps:
+    
       - name: Checkout the Main Branch
         uses: actions/checkout@v4.1.5
       - run: npm ci
         name: "Install NPM dependencies"
+        
       - run: npx cypress verify
         name: "Cypress verify"
-      - run: npm run cy:ci
-        id: My_Step
+        
+      - run: |
+          record_link=$(npm run cy:ci)
+          echo "::set-output name=record_link::$record_link"
+        id: cypress
         name: "Cypress Test Execution"
+        
       - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -28,7 +34,8 @@ jobs:
           # email subject
           subject: ${{ github.repository }} ${{ github.job }} is ${{ job.status }}
           # email body as text
-          body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} is ${{ job.status }} and  ${{steps.My_Step.outputs}}
+          body: |
+            ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} is ${{ job.status }} and [here](${{ steps.cypress.outputs.record_link}})
           # comma-separated string, send email to
           to: shubhammotwani2000@gmail.com
           # from email name
