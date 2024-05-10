@@ -1,28 +1,19 @@
 name: Cypress Tests
-on:
-  push:
-jobs:
+on: [push]
+jobs: 
   cypress-run:
     name: Cypress Automated Test Run
     runs-on: windows-latest
     steps:
       - name: Checkout the Main Branch
         uses: actions/checkout@v4.1.5
-      
-      - name: Install NPM dependencies
-        run: npm ci
-      
-      - name: Cypress verify
-        run: npx cypress verify
-      
-      - name: Cypress Test Execution
-        id: cypress
-        run: |
-          output=$(npm run cy:ci)
-          echo "Output: $output"
-          echo "cypress_output=$output" >> $GITHUB_ENV
-        shell: bash
- 
+      - run: npm ci
+        name: "Install NPM dependencies"
+      - run: npx cypress verify
+        name: "Cypress verify"
+      - run: npm run cy:ci
+        id: My_Step
+        name: "Cypress Test Execution"
       - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -30,15 +21,14 @@ jobs:
           # mail server settings
           server_address: smtp.gmail.com
           server_port: 465
-          # Optional (recommended): mail server username
+          # Optional (recommended): mail server username:
           username: shubhammotwani2000@gmail.com
-          # Optional (recommended) mail server password
+          # Optional (recommended) mail server password:
           password: wtexdyrxbzvuwgux
           # email subject
           subject: ${{ github.repository }} ${{ github.job }} is ${{ job.status }}
           # email body as text
-          body: |
-            ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} is ${{ job.status }} and [here](${{ env.cypress_output }})
+          body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} is ${{ job.status }} and  ${{steps.My_Step.outputs}}
           # comma-separated string, send email to
           to: shubhammotwani2000@gmail.com
           # from email name
